@@ -24,4 +24,21 @@ public class AddressBookFileIO {
 
     }
 
+    //read data from text file
+    public static List<String> readDataFromFile(String filename) {
+
+        List<String> addressBookList = new ArrayList<String>();
+        String bookName = filename;
+        String fileName = bookName + ".txt";
+        System.out.println("Reading from : " + fileName + "\n");
+        try {
+            Files.lines(new File(fileName).toPath())
+                    .map(line -> line.trim())
+                    .forEach(employeeDetails -> {
+                        System.out.println(employeeDetails);
+                        addressBookList.add(employeeDetails);
+                    });
+
+        }
+    }
 }
