@@ -39,6 +39,34 @@ public class AddressBookFileIO {
                         addressBookList.add(employeeDetails);
                     });
 
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return addressBookList;
     }
+
+    // prints person in console
+    public void display(String fileName) {
+
+        try {
+            Files.lines(new File(fileName).toPath()).forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    // counts files
+    public long countEntries(String fileName) {
+
+        long entries = 0;
+        try {
+            entries = Files.lines(new File(fileName).toPath()).count();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return entries;
+    }
+
+
 }
