@@ -310,27 +310,4 @@ public class AddressBook {
 
     }
 
-    // read data from json file
-    public void readDataFromJson() throws IOException {
-
-        ArrayList<ContactPerson> contactList;
-        String fileName = "./" + this.adressBookName + ".json";
-        Path filePath = Paths.get(fileName);
-
-        try (Reader reader = Files.newBufferedReader(filePath)) {
-            Gson gson = new Gson();
-            contactList = new ArrayList<>(Arrays.asList(gson.fromJson(reader, ContactPerson[].class)));
-            for (ContactPerson contact : contactList) {
-                System.out.println("{");
-                System.out.println("Firstname : " + contact.getFirstName());
-                System.out.println("Lastname : " + contact.getLastName());
-                System.out.println("City : " + contact.getCity());
-                System.out.println("State : " + contact.getState());
-                System.out.println("Zip Code : " + contact.getZip());
-                System.out.println("Phone number : " + contact.getPhoneNumber());
-                System.out.println("Email : " + contact.getEmail());
-                System.out.println("}\n");
-            }
-        }
-    }
 }
